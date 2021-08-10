@@ -10,9 +10,9 @@ const box = document.querySelector('#boxes')
 
 buttonRender.addEventListener('click', createBoxes)
 buttonDestroy.addEventListener('click', destroyBoxes)
+let size = 30
 
 function createBoxes() {
-  let size = 30
   for (let i = 0; i < value; i += 1) {
     const div = document.createElement('div')
     div.style.width = `${size}px`
@@ -24,10 +24,12 @@ function createBoxes() {
 }
 
 function destroyBoxes() {
-  for (let i = 0; i < value; i += 1) {
-    const div = box.querySelector('div')
-    box.removeChild(div)
+  while (box.firstChild) {
+    box.removeChild(box.firstChild)
   }
+  size = 30
+  input.value = ''
+  value = 0
 }
 
 function getRandom(min, max) {
